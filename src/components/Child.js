@@ -1,24 +1,21 @@
-import React from 'react';
+import React,{useState} from "react";
 
-const Child = ({todos,setdotos}) => {
-    // console.log(todos)
-    return (
-        <div className='child'>
+const Child=({todos,completeTodo})=>{
+    return(
+        <div>
             <h2>Child Component</h2>
-            <ul>
-                {
-                    Object.keys(todos).map((element)=>(
-                        <li>{element} 
-                            {
-                                (todos[element]=='pending')
-                                &&(<button onClick={()=>{setdotos({...todos,[`${element}`]:'completed'})}}>Complete</button>)
-                            }
-                        </li>
-                    ))
-                }
-            </ul>
+        <ul>
+            {todos.map(todo=>(
+                <li key={todo.id}>
+                    {todo.text}
+                    {!todo.completed && 
+                    (<button onClick={()=>completeTodo(todo.id)}>Complete</button>)}
+
+                </li>
+            ))}
+        </ul>
         </div>
     )
 }
 
-export default Child
+export default Child;
