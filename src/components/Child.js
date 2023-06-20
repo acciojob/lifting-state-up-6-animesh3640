@@ -11,7 +11,7 @@ const Child = ({todos,setdotos}) => {
                         <li>{element} 
                             {
                                 (todos[element]=='pending')
-                                &&(<button onClick={()=>{setdotos({...todos,[`${element}`]:'complete'})}}>Complete</button>)
+                                &&(<button onClick={()=>{setdotos({...todos,[`${element}`]:'completed'})}}>Complete</button>)
                             }
                         </li>
                     ))
