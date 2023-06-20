@@ -1,24 +1,24 @@
-import React from 'react'
+import React from 'react';
 
-const Child = ({ handleComplete, todos }) => {
-
-
+const Child = ({todos,setdotos}) => {
+    // console.log(todos)
     return (
-        <div>
+        <div className='child'>
             <h2>Child Component</h2>
             <ul>
                 {
-                    todos.map((value, index) => {
-                        return <li key={index}>{value.key}
-                            {!value.completed &&
-                                <button onClick={() => handleComplete(index)}>Complete</button>
+                    Object.keys(todos).map((element)=>(
+                        <li>{element} 
+                            {
+                                (todos[element]=='pending')
+                                &&(<button onClick={()=>{setdotos({...todos,[`${element}`]:'completed'})}}>Complete</button>)
                             }
                         </li>
-                    })
+                    ))
                 }
             </ul>
         </div>
     )
 }
 
-export default Child;
+export default Child
